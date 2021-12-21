@@ -2,6 +2,7 @@ package com.example.roomdatabase_pccomponentes_jonatansuarezv2.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -16,5 +17,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void entrar(View view) {
+        Intent intent = new Intent(this,activity_gestion.class);
+        startActivity(intent);
     }
 }
