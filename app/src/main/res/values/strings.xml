@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">RoomDataBase_PcComponentes_JonatanSuarezV2</string>
+    <string name="gestionar_almac_n">GESTIONAR ALMACÉN</string>
+    <string name="modificar">MODIFICAR</string>
+    <string name="gesti_n_de_almac_n">GESTIÓN DE ALMACÉN</string>
+    <string name="nuevo_producto">NUEVO PRODUCTO</string>
+    <string name="almac_n">ALMACÉN</string>
+    <string name="borrar">BORRAR</string>
+    <string name="selecciona_un_producto">Selecciona un producto:</string>
+    <string name="borrar_producto">BORRAR PRODUCTO</string>
+    <string name="borrar">BORRAR</string>
+    <string name="nombre">NOMBRE</string>
+    <string name="almacen">ALMACEN</string>
+    <string name="_10_unds">10 unds</string>
+    <string name="reacondicionado">Reacondicionado</string>
+    <string name="todo">TODO</string>
+    <string name="selecciona_un_producto">Selecciona un producto:</string>
+    <string name="mostrar_productos">MOSTRAR PRODUCTOS</string>
+    <string name="cantidad">Cantidad</string>
+    <string name="selecciona_un_almac_n">Selecciona un almacén:</string>
+    <string name="estado_del_producto">Estado del producto</string>
+    <string name="nuevo">Nuevo</string>
+    <string name="crear">CREAR</string>
+    <string name="nombre1">Nombre</string>
+    <string name="item_producto">item_producto</string>
+    <string name="item_almacen">item_almacen</string>
+    <string name="foto_producto">foto producto</string>
+    <string name="nombre_producto">nombre producto</string>
+    <string name="almac_n1">almacén</string>
+    <string name="id">Id</string>
+
+
+    <string-array name="almacenes">
+        <item>Madrid</item>
+        <item>Murcia</item>
+    </string-array>
+</resources>

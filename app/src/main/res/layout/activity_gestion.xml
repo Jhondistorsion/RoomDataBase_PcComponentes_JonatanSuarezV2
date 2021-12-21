@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondopccomp"
+    tools:context=".activities.activity_gestion">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="200dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="56dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_titulo"
+        app:srcCompat="@drawable/logopccomp" />
+
+    <Button
+        android:id="@+id/btn_modificar"
+        android:layout_width="126dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="48dp"
+        android:backgroundTint="@color/mis_botones"
+        android:onClick="modificar"
+        android:text="@string/modificar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_nuevo" />
+
+    <Button
+        android:id="@+id/btn_borrar"
+        android:layout_width="126dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="60dp"
+        android:backgroundTint="@color/mis_botones"
+        android:onClick="borrar"
+        android:text="@string/borrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_almacen" />
+
+    <TextView
+        android:id="@+id/txt_titulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/cardview_shadow_start_color"
+        android:gravity="center"
+        android:text="@string/gesti_n_de_almac_n"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_nuevo"
+        android:layout_width="126dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="200dp"
+        android:backgroundTint="@color/mis_botones"
+        android:onClick="nuevo_producto"
+        android:text="@string/nuevo_producto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_titulo" />
+
+    <Button
+        android:id="@+id/btn_almacen"
+        android:layout_width="126dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="60dp"
+        android:backgroundTint="@color/mis_botones"
+        android:onClick="almacen"
+        android:text="@string/almac_n"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_titulo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

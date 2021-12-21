@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondopccomp"
+    tools:context=".activities.activity_nuevo_modifica_producto">
+
+    <TextView
+        android:id="@+id/txt_titulo_prod"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/cardview_shadow_start_color"
+        android:gravity="center"
+        android:text="@string/nuevo_producto"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edt_nombre"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="80dp"
+        android:autofillHints="0"
+        android:background="@color/white"
+        android:ems="10"
+        android:hint="@string/nombre"
+        android:inputType="textPersonName"
+        android:padding="@dimen/paddingcasillas"
+        android:text="@string/nombre1"
+        android:textColorHint="#757575"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_titulo_prod" />
+
+    <EditText
+        android:id="@+id/edt_cantidad"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="220dp"
+        android:autofillHints="0"
+        android:background="@color/white"
+        android:ems="10"
+        android:hint="@string/cantidad"
+        android:inputType="number"
+        android:padding="@dimen/paddingcasillas"
+        android:text="@string/cantidad"
+        android:textColorHint="#757575"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_nombre" />
+
+    <Spinner
+        android:id="@+id/sp_almacen"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="80dp"
+        android:entries="@array/almacenes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_almacen" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="406dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_estado">
+
+        <RadioButton
+            android:id="@+id/rad_nuevo"
+            android:layout_width="wrap_content"
+            android:layout_height="72dp"
+            android:checked="true"
+            android:text="@string/nuevo"
+            android:textColor="#5D4037"
+            android:textSize="16sp"
+            android:translationX="80dp" />
+
+        <RadioButton
+            android:id="@+id/rad_react"
+            android:layout_width="wrap_content"
+            android:layout_height="63dp"
+            android:text="@string/reacondicionado"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:translationX="100dp" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/txt_almacen"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@color/cardview_shadow_start_color"
+        android:paddingStart="80dp"
+        android:text="@string/selecciona_un_almac_n"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_cantidad"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/txt_estado"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@color/cardview_shadow_start_color"
+        android:paddingStart="80dp"
+        android:text="@string/estado_del_producto"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_almacen"
+        tools:ignore="RtlSymmetry" />
+
+    <Button
+        android:id="@+id/btn_crear_modificar"
+        android:layout_width="251dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="80dp"
+        android:backgroundTint="@color/mis_botones"
+        android:onClick="crea_modifica"
+        android:text="@string/crear"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
