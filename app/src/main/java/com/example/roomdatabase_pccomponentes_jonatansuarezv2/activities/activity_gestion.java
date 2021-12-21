@@ -21,7 +21,7 @@ public class activity_gestion extends AppCompatActivity {
     }
 
     public void modificar(View view) {
-        Intent intent = new Intent(this,activity_nuevo_modifica_producto.class);
+        Intent intent = new Intent(this,activity_eliminar_seleccionar_producto.class);
         modo = "modificar";
         intent.putExtra(EXTRA_MODO,modo);
         startActivity(intent);

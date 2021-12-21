@@ -5,8 +5,8 @@
     <string name="gesti_n_de_almac_n">GESTIÓN DE ALMACÉN</string>
     <string name="nuevo_producto">NUEVO PRODUCTO</string>
     <string name="almac_n">ALMACÉN</string>
-    <string name="borrar">BORRAR</string>
-    <string name="selecciona_un_producto">Selecciona un producto:</string>
+    <string name="borrar1">BORRAR</string>
+    <string name="selecciona_un_producto1">Selecciona un producto:</string>
     <string name="borrar_producto">BORRAR PRODUCTO</string>
     <string name="borrar">BORRAR</string>
     <string name="nombre">NOMBRE</string>
