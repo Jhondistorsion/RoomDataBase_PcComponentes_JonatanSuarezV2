@@ -35,7 +35,7 @@ public class Producto implements Serializable
     @ColumnInfo(name = "estado")
     private String estado;
 
-    public Producto(int idProducto, @NonNull String nombre, int cantidad, @NonNull String almacen, @NonNull String estado) {
+    public Producto(@NonNull String nombre, int cantidad, @NonNull String almacen, @NonNull String estado) {
         this.idProducto = 0;
         this.nombre = nombre;
         this.cantidad = cantidad;
