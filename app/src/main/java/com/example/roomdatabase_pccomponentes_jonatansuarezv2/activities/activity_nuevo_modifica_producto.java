@@ -114,27 +114,35 @@ public class activity_nuevo_modifica_producto extends AppCompatActivity implemen
 
             //Metodo crear///////////////////////////
 
-            obtenerInformacion();
+            boolean errorDatos = obtenerInformacion();
 
+            if(!errorDatos){
 
-            AlertDialog.Builder alerta1 = new AlertDialog.Builder(this);
-            alerta1.setTitle("¿Deseas guardar el producto?");
-            alerta1.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    int cantidadInt = Integer.parseInt(cantidad);
-                    Producto p = new Producto(nombre,cantidadInt,almacen,estado);
-                    boolean insertaOK = mProductoViewModel.insertarProducto(p);
-                    mostrarToast(insertaOK, "creado","crear");
+                if(estado == null){
+                    estado = "Nuevo";
                 }
-            });
-            alerta1.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
 
-                }
-            });
-            alerta1.show();
+
+                AlertDialog.Builder alerta1 = new AlertDialog.Builder(this);
+                alerta1.setTitle("¿Deseas guardar el producto?");
+                alerta1.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        int cantidadInt = Integer.parseInt(cantidad);
+                        Producto p = new Producto(nombre,cantidadInt,almacen,estado);
+                        boolean insertaOK = mProductoViewModel.insertarProducto(p);
+                        mostrarToast(insertaOK, "creado","crear");
+                    }
+                });
+                alerta1.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                alerta1.show();
+
+            }
 
 
 
@@ -142,31 +150,34 @@ public class activity_nuevo_modifica_producto extends AppCompatActivity implemen
 
             //Metodo modificar////////////////////////
 
-            obtenerInformacion();
+            boolean errorDatos = obtenerInformacion();
 
-            AlertDialog.Builder alerta1 = new AlertDialog.Builder(this);
-            alerta1.setTitle("¿Deseas modificar el producto?");
-            alerta1.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    int cantidadInt = Integer.parseInt(cantidad);
-                    Producto p = new Producto(nombre,cantidadInt,almacen,estado);
-                    boolean insertaOK = mProductoViewModel.actualizarProducto(p);
-                    mostrarToast(insertaOK, "modificado","modificar");
-                }
-            });
-            alerta1.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
+            if(!errorDatos){
 
-                }
-            });
-            alerta1.show();
+                AlertDialog.Builder alerta1 = new AlertDialog.Builder(this);
+                alerta1.setTitle("¿Deseas modificar el producto?");
+                alerta1.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        int cantidadInt = Integer.parseInt(cantidad);
+                        Producto p = new Producto(nombre,cantidadInt,almacen,estado);
+                        boolean insertaOK = mProductoViewModel.actualizarProducto(p);
+                        mostrarToast(insertaOK, "modificado","modificar");
+                    }
+                });
+                alerta1.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
 
+                    }
+                });
+                alerta1.show();
+
+            }
         }
     }
 
-    private void obtenerInformacion(){
+    private boolean obtenerInformacion(){
 
         nombre = String.valueOf(edt_nombre.getText());
         cantidad = String.valueOf(edt_cantidad.getText());
@@ -179,11 +190,8 @@ public class activity_nuevo_modifica_producto extends AppCompatActivity implemen
             edt_cantidad.setError("El campo no puede estar vacío");
             error = true;
         }
-        if(error){
 
-            return;
-
-        }
+        return error;
 
     }
 
