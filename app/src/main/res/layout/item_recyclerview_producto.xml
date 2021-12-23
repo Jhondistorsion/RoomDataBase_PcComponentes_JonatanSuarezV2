@@ -26,20 +26,20 @@
             android:padding="10dp">
 
             <TextView
-                android:id="@+id/txt_id"
+                android:id="@+id/txt_rv_idProducto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/id" />
 
             <TextView
-                android:id="@+id/txt_rv_producto_nombre"
+                android:id="@+id/txt_rv_nombreProducto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/nombre_producto"
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/txt_rv_producto_almacen"
+                android:id="@+id/txt_rv_cantidadProducto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/almac_n1" />
