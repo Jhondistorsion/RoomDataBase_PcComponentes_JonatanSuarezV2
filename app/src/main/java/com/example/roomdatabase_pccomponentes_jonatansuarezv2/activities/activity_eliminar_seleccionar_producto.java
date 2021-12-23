@@ -28,6 +28,7 @@ import java.util.List;
 public class activity_eliminar_seleccionar_producto extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     public static final String EXTRA_OBJETO_PRODUCTO = "miProducto";
+    public static final String EXTRA_MODO_SELECCIONAR = "miModoSeleccionar";
 
     private TextView txt_titulo_modificar_borrar;
     private Spinner sp_productos;
@@ -35,7 +36,7 @@ public class activity_eliminar_seleccionar_producto extends AppCompatActivity im
 
     private ProductoViewModel mProductoViewModel;
     private Producto pseleccionado;
-    private ArrayAdapter<Producto> adapter;
+    static ArrayAdapter<Producto> adapter;
 
     private String modo;
 
@@ -141,6 +142,9 @@ public class activity_eliminar_seleccionar_producto extends AppCompatActivity im
 
             Intent intent = new Intent(this, activity_nuevo_modifica_producto.class);
             intent.putExtra(EXTRA_OBJETO_PRODUCTO, pseleccionado);
+            modo = "modificar";
+            intent.putExtra(EXTRA_MODO_SELECCIONAR,modo);
+            startActivity(intent);
         }
 
 

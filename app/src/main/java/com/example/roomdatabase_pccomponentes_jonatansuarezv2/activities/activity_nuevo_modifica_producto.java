@@ -33,7 +33,9 @@ public class activity_nuevo_modifica_producto extends AppCompatActivity implemen
 
     private String almacen, estado, nombre, cantidad;
 
-    ProductoViewModel mProductoViewModel;
+    private ProductoViewModel mProductoViewModel;
+    private Intent intent;
+    private Producto p;
 
 
     @Override
@@ -51,16 +53,24 @@ public class activity_nuevo_modifica_producto extends AppCompatActivity implemen
 
         mProductoViewModel = new ViewModelProvider(this).get(ProductoViewModel.class);
 
-        Intent intent = getIntent();
+        intent = getIntent();
         if(intent !=null){
+
             modo = intent.getStringExtra(activity_gestion.EXTRA_MODO);
-            aplicaModo(modo);
+
+            if(modo == null) {
+                modo = intent.getStringExtra(activity_eliminar_seleccionar_producto.EXTRA_MODO_SELECCIONAR);
+            }
+
 
             if(sp_almacen!=null){
                 ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.almacenes, R.layout.item_almacen);
                 sp_almacen.setAdapter(adapter);
                 sp_almacen.setOnItemSelectedListener(this);
+
             }
+
+            aplicaModo(modo);
 
         }
 
@@ -105,6 +115,24 @@ public class activity_nuevo_modifica_producto extends AppCompatActivity implemen
         }else if(modo.equals("modificar")){
             txt_titulo_prod.setText("MODIFICAR PRODUCTO");
             btn_crear_modificar.setText("MODIFICAR");
+
+            p = (Producto) intent.getSerializableExtra(activity_eliminar_seleccionar_producto.EXTRA_OBJETO_PRODUCTO);
+            edt_nombre.setText(p.getNombre());
+            String cantidadp = String.valueOf(p.getCantidad());
+            edt_cantidad.setText(cantidadp);
+
+            if(p.getAlmacen().equals("Madrid")){
+                sp_almacen.setSelection(0);
+            }else if(p.getAlmacen().equals("Murcia")){
+                sp_almacen.setSelection(1);
+            }
+
+            if(p.getEstado().equals("Nuevo")){
+                rad_nuevo.setChecked(true);
+            }else if(p.getEstado().equals("Reacondicionado")){
+                rad_react.setChecked(true);
+            }
+
         }
     }
 
@@ -162,7 +190,12 @@ public class activity_nuevo_modifica_producto extends AppCompatActivity implemen
                         int cantidadInt = Integer.parseInt(cantidad);
                         Producto p = new Producto(nombre,cantidadInt,almacen,estado);
                         boolean insertaOK = mProductoViewModel.actualizarProducto(p);
-                        mostrarToast(insertaOK, "modificado","modificar");
+                        if(insertaOK){
+                            activity_eliminar_seleccionar_producto.adapter.clear();
+                            mostrarToast(insertaOK, "modificado","modificar");
+                        }else{
+                            mostrarToast(false, "modificado","modificar");
+                        }
                     }
                 });
                 alerta1.setNegativeButton("No", new DialogInterface.OnClickListener() {
