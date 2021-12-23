@@ -38,6 +38,7 @@ public class ProductoViewHolder extends RecyclerView.ViewHolder implements View.
         Producto producto = productos.get(mPosition);
         Intent intent = new Intent(lcAdapter.getP(), activity_mostrar_detalles_producto.class);
         intent.putExtra(EXTRA_OBJETO_PRODUCTO, producto);
+        lcAdapter.getP().startActivity(intent);
 
     }
 }

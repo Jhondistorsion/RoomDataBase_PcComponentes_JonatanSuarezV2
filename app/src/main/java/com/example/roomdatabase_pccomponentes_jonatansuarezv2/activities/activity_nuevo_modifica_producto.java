@@ -160,6 +160,8 @@ public class activity_nuevo_modifica_producto extends AppCompatActivity implemen
                         Producto p = new Producto(nombre,cantidadInt,almacen,estado);
                         boolean insertaOK = mProductoViewModel.insertarProducto(p);
                         mostrarToast(insertaOK, "creado","crear");
+
+                        volverAlMenuPrincipal();
                     }
                 });
                 alerta1.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -196,7 +198,10 @@ public class activity_nuevo_modifica_producto extends AppCompatActivity implemen
                         }else{
                             mostrarToast(false, "modificado","modificar");
                         }
+
+                        volverAlMenuPrincipal();
                     }
+
                 });
                 alerta1.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
@@ -208,6 +213,7 @@ public class activity_nuevo_modifica_producto extends AppCompatActivity implemen
 
             }
         }
+
     }
 
     private boolean obtenerInformacion(){
@@ -240,6 +246,13 @@ public class activity_nuevo_modifica_producto extends AppCompatActivity implemen
             Toast.makeText(this,"Error al " + b + " el producto",Toast.LENGTH_SHORT).show();
 
         }
+
+    }
+
+    private void volverAlMenuPrincipal(){
+
+        Intent intent = new Intent(this,activity_gestion.class);
+        startActivity(intent);
 
     }
 

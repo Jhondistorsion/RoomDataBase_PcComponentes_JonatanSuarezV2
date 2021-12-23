@@ -60,9 +60,9 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ProductoViewHold
     public void onBindViewHolder(@NonNull ProductoViewHolder holder, int position) {
         if (listaProductos != null) {
             Producto producto_actual = listaProductos.get(position);
-            holder.txt_rv_idProducto.setText("Id " + producto_actual.getIdProducto());
-            holder.txt_rv_nombreProducto.setText("Producto " + producto_actual.getNombre());
-            holder.txt_rv_cantidadProducto.setText("Cantidad " + producto_actual.getCantidad());
+            holder.txt_rv_idProducto.setText("id: " + producto_actual.getIdProducto());
+            holder.txt_rv_nombreProducto.setText("Producto: " + producto_actual.getNombre());
+            holder.txt_rv_cantidadProducto.setText("Cantidad: " + producto_actual.getCantidad());
         }
     }
 
