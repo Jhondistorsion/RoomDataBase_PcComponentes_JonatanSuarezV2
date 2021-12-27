@@ -123,10 +123,12 @@ public class activity_eliminar_seleccionar_producto extends AppCompatActivity im
             alerta1.setNegativeButton("No", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+                    mostrarToast("Operación cancelada");
 
                 }
             });
             alerta1.show();
+
 
 
         } else if (modo.equals("modificar")) {
@@ -160,7 +162,7 @@ public class activity_eliminar_seleccionar_producto extends AppCompatActivity im
     public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
         Producto p = (Producto) sp_productos.getItemAtPosition(i);
         pseleccionado = p;
-        Toast.makeText(this, p.getNombre(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, p.getNombre(), Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -54,17 +54,17 @@ public class activity_nuevo_modifica_producto extends AppCompatActivity implemen
         mProductoViewModel = new ViewModelProvider(this).get(ProductoViewModel.class);
 
         intent = getIntent();
-        if(intent !=null){
+        if (intent != null) {
 
             modo = intent.getStringExtra(activity_gestion.EXTRA_MODO);
 
-            if(modo == null) {
+            if (modo == null) {
                 modo = intent.getStringExtra(activity_eliminar_seleccionar_producto.EXTRA_MODO_SELECCIONAR);
             }
 
 
-            if(sp_almacen!=null){
-                ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.almacenes, R.layout.item_almacen);
+            if (sp_almacen != null) {
+                ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.almacenes, R.layout.item_almacen);
                 sp_almacen.setAdapter(adapter);
                 sp_almacen.setOnItemSelectedListener(this);
 
@@ -92,8 +92,8 @@ public class activity_nuevo_modifica_producto extends AppCompatActivity implemen
     public void asignaEstado(View view) {
 
         RadioButton rb1 = (RadioButton) view;
-        if(rb1.isChecked()){
-            switch (rb1.getId()){
+        if (rb1.isChecked()) {
+            switch (rb1.getId()) {
                 case R.id.rad_nuevo:
                     estado = "Nuevo";
                     break;
@@ -107,12 +107,12 @@ public class activity_nuevo_modifica_producto extends AppCompatActivity implemen
 
     private void aplicaModo(String modo) {
 
-        if(modo.equals("crear")){
+        if (modo.equals("crear")) {
 
             txt_titulo_prod.setText("NUEVO PRODUCTO");
             btn_crear_modificar.setText("CREAR");
 
-        }else if(modo.equals("modificar")){
+        } else if (modo.equals("modificar")) {
             txt_titulo_prod.setText("MODIFICAR PRODUCTO");
             btn_crear_modificar.setText("MODIFICAR");
 
@@ -121,15 +121,15 @@ public class activity_nuevo_modifica_producto extends AppCompatActivity implemen
             String cantidadp = String.valueOf(p.getCantidad());
             edt_cantidad.setText(cantidadp);
 
-            if(p.getAlmacen().equals("Madrid")){
+            if (p.getAlmacen().equals("Madrid")) {
                 sp_almacen.setSelection(0);
-            }else if(p.getAlmacen().equals("Murcia")){
+            } else if (p.getAlmacen().equals("Murcia")) {
                 sp_almacen.setSelection(1);
             }
 
-            if(p.getEstado().equals("Nuevo")){
+            if (p.getEstado().equals("Nuevo")) {
                 rad_nuevo.setChecked(true);
-            }else if(p.getEstado().equals("Reacondicionado")){
+            } else if (p.getEstado().equals("Reacondicionado")) {
                 rad_react.setChecked(true);
             }
 
@@ -138,15 +138,15 @@ public class activity_nuevo_modifica_producto extends AppCompatActivity implemen
 
     public void crea_modifica(View view) {
 
-        if(modo.equals("crear")){
+        if (modo.equals("crear")) {
 
             //Metodo crear///////////////////////////
 
             boolean errorDatos = obtenerInformacion();
 
-            if(!errorDatos){
+            if (!errorDatos) {
 
-                if(estado == null){
+                if (estado == null) {
                     estado = "Nuevo";
                 }
 
@@ -157,9 +157,9 @@ public class activity_nuevo_modifica_producto extends AppCompatActivity implemen
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         int cantidadInt = Integer.parseInt(cantidad);
-                        Producto p = new Producto(nombre,cantidadInt,almacen,estado);
+                        Producto p = new Producto(nombre, cantidadInt, almacen, estado);
                         boolean insertaOK = mProductoViewModel.insertarProducto(p);
-                        mostrarToast(insertaOK, "creado","crear");
+                        mostrarToast(insertaOK, "creado", "crear");
 
                         volverAlMenuPrincipal();
                     }
@@ -167,6 +167,7 @@ public class activity_nuevo_modifica_producto extends AppCompatActivity implemen
                 alerta1.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        mostrarMensajeCancelado();
 
                     }
                 });
@@ -175,14 +176,13 @@ public class activity_nuevo_modifica_producto extends AppCompatActivity implemen
             }
 
 
-
-            }else if(modo.equals("modificar")){
+        } else if (modo.equals("modificar")) {
 
             //Metodo modificar////////////////////////
 
             boolean errorDatos = obtenerInformacion();
 
-            if(!errorDatos){
+            if (!errorDatos) {
 
                 AlertDialog.Builder alerta1 = new AlertDialog.Builder(this);
                 alerta1.setTitle("¿Deseas modificar el producto?");
@@ -190,13 +190,17 @@ public class activity_nuevo_modifica_producto extends AppCompatActivity implemen
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         int cantidadInt = Integer.parseInt(cantidad);
-                        Producto p = new Producto(nombre,cantidadInt,almacen,estado);
+                        //Producto p = new Producto(nombre,cantidadInt,almacen,estado);
+                        p.setNombre(nombre);
+                        p.setCantidad(cantidadInt);
+                        p.setAlmacen(almacen);
+                        p.setEstado(estado);
                         boolean insertaOK = mProductoViewModel.actualizarProducto(p);
-                        if(insertaOK){
+                        if (insertaOK) {
                             activity_eliminar_seleccionar_producto.adapter.clear();
-                            mostrarToast(insertaOK, "modificado","modificar");
-                        }else{
-                            mostrarToast(false, "modificado","modificar");
+                            mostrarToast(insertaOK, "modificado", "modificar");
+                        } else {
+                            mostrarToast(false, "modificado", "modificar");
                         }
 
                         volverAlMenuPrincipal();
@@ -207,6 +211,8 @@ public class activity_nuevo_modifica_producto extends AppCompatActivity implemen
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
+                        mostrarMensajeCancelado();
+
                     }
                 });
                 alerta1.show();
@@ -216,18 +222,24 @@ public class activity_nuevo_modifica_producto extends AppCompatActivity implemen
 
     }
 
-    private boolean obtenerInformacion(){
+    private boolean obtenerInformacion() {
 
         nombre = String.valueOf(edt_nombre.getText());
         cantidad = String.valueOf(edt_cantidad.getText());
         boolean error = false;
 
-        if(nombre.isEmpty()){
+        if (nombre.isEmpty()) {
             edt_nombre.setError("El campo no puede estar vacío");
             error = true;
-        }else if(cantidad.isEmpty()){
+        } else if (cantidad.isEmpty()) {
             edt_cantidad.setError("El campo no puede estar vacío");
             error = true;
+        }
+
+        if (modo.equals("modificar")) {
+            if (estado == null) {
+                estado = p.getEstado();
+            }
         }
 
         return error;
@@ -237,21 +249,26 @@ public class activity_nuevo_modifica_producto extends AppCompatActivity implemen
 
     private void mostrarToast(boolean insertaOK, String a, String b) {
 
-        if(insertaOK){
+        if (insertaOK) {
 
-            Toast.makeText(this,"Producto " + a + " con éxito",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Producto " + a + " con éxito", Toast.LENGTH_SHORT).show();
 
-        }else{
+        } else {
 
-            Toast.makeText(this,"Error al " + b + " el producto",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error al " + b + " el producto", Toast.LENGTH_SHORT).show();
 
         }
 
     }
 
-    private void volverAlMenuPrincipal(){
+    private void mostrarMensajeCancelado() {
 
-        Intent intent = new Intent(this,activity_gestion.class);
+        Toast.makeText(this, "Operación cancelada", Toast.LENGTH_SHORT).show();
+    }
+
+    private void volverAlMenuPrincipal() {
+
+        Intent intent = new Intent(this, activity_gestion.class);
         startActivity(intent);
 
     }

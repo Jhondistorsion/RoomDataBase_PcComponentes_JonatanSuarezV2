@@ -28,6 +28,7 @@
     <string name="nombre_producto">nombre producto</string>
     <string name="almac_n1">almacén</string>
     <string name="id">Id</string>
+    <string name="volver">VOLVER</string>
 
 
     <string-array name="almacenes">

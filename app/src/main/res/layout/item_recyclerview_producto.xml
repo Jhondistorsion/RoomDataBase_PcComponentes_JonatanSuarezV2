@@ -9,19 +9,22 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+        android:layout_margin="10dp"
+        android:background="@color/cardview_shadow_start_color">
 
         <ImageView
             android:id="@+id/img_rv_producto"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_gravity="center_vertical"
             android:contentDescription="@string/foto_producto"
+            android:padding="5dp"
             app:srcCompat="@drawable/producto"
             tools:ignore="ImageContrastCheck" />
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="137dp"
             android:layout_weight="1"
             android:orientation="vertical"
             android:padding="10dp">
@@ -30,20 +33,26 @@
                 android:id="@+id/txt_rv_idProducto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/id" />
+                android:text="@string/id"
+                android:textColor="@color/white"
+                tools:ignore="TextContrastCheck" />
 
             <TextView
                 android:id="@+id/txt_rv_nombreProducto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/nombre_producto"
-                android:textSize="24sp" />
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                tools:ignore="TextContrastCheck" />
 
             <TextView
                 android:id="@+id/txt_rv_cantidadProducto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/almac_n1" />
+                android:text="@string/cantidad"
+                android:textColor="@color/white"
+                tools:ignore="TextContrastCheck" />
 
         </LinearLayout>
     </LinearLayout>
